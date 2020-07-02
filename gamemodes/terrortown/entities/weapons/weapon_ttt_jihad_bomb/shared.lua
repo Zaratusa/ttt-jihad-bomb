@@ -24,7 +24,7 @@ else
 		desc = "jihad_bomb_desc"
 	}
 
-	hook.Add("TTT2ScoreboardAddPlayerRow", "TTTJihadBomb", function(ply)
+	hook.Add("TTT2ScoreboardAddPlayerRow", "ZaratusasTTTMod", function(ply)
 		local ID64 = ply:SteamID64()
 		local ID64String = tostring(ID64)
 
