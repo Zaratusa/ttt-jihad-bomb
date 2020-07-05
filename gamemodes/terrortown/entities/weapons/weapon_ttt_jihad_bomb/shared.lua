@@ -212,12 +212,12 @@ function SWEP:Explode()
 	util.Effect("Explosion", effect, true, true)
 
 	-- make sure the owner dies anyway
-	if (IsValid(dmgowner)) then
+	if (SERVER and IsValid(dmgowner) and dmgowner:Alive()) then
 		dmgowner:Kill()
 	end
 
-	self:Remove()
 	BurnOwnersBody(model)
+	self:Remove()
 end
 
 -- calculate who is affected by the damage
