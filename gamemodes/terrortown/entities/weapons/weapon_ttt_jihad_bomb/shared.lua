@@ -2,8 +2,8 @@
 SWEP.Author = "Zaratusa"
 SWEP.Contact = "http://steamcommunity.com/profiles/76561198032479768"
 
-CreateConVar("ttt_jihad_buyable", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Should the Jihad Bomb be buyable for Traitors?")
-CreateConVar("ttt_jihad_inloadout", 0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Should the Jihad Bomb be in the loadout for Traitors?")
+local buyable = CreateConVar("ttt_jihad_buyable", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Should the Jihad Bomb be buyable for Traitors?", 0, 1)
+local isLoadout = CreateConVar("ttt_jihad_loadout", 0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Should the Jihad Bomb be in the loadout for Traitors?", 0, 1)
 
 local sound = CreateConVar("ttt_jihad_sound", "weapons/jihad_bomb/jihad.wav", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE}, "The sound when starting the Jihab Bomb.")
 
@@ -65,7 +65,7 @@ SWEP.Kind = WEAPON_ROLE
 -- then this gun can be spawned as a random weapon.
 SWEP.AutoSpawnable = false
 
-if (GetConVar("ttt_jihad_buyable"):GetBool()) then
+if (buyable:GetBool()) then
 	-- CanBuy is a table of ROLE_* entries like ROLE_TRAITOR and ROLE_DETECTIVE. If
 	-- a role is in this table, those players can buy this.
 	SWEP.CanBuy = { ROLE_TRAITOR }
@@ -74,7 +74,7 @@ if (GetConVar("ttt_jihad_buyable"):GetBool()) then
 	SWEP.LimitedStock = true
 end
 
-if (GetConVar("ttt_jihad_inloadout"):GetBool()) then
+if (isLoadout:GetBool()) then
 	-- InLoadoutFor is a table of ROLE_* entries that specifies which roles should
 	-- receive this weapon as soon as the round starts.
 	SWEP.InLoadoutFor = { ROLE_TRAITOR }
