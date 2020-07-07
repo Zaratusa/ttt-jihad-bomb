@@ -9,7 +9,6 @@ local sound = CreateConVar("ttt_jihad_sound", "weapons/jihad_bomb/jihad.wav", {F
 
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("254177214")
 else
 	LANG.AddToLanguage("english", "jihad_bomb_name", "Jihad Bomb")
 	LANG.AddToLanguage("english", "jihad_bomb_desc", "Sacrifice yourself to Allah.\nYour 72 virgins await.\n\nNOTE: No refund after use.")
@@ -26,9 +25,8 @@ else
 
 	hook.Add("TTT2ScoreboardAddPlayerRow", "ZaratusasTTTMod", function(ply)
 		local ID64 = ply:SteamID64()
-		local ID64String = tostring(ID64)
 
-		if (ID64String == "76561198032479768") then
+		if (ID64 == "76561198032479768") then
 			AddTTT2AddonDev(ID64)
 		end
 	end)
@@ -257,7 +255,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:Holster()
-	return !self:GetNWBool("Exploding")
+	return not self:GetNWBool("Exploding")
 end
 
 -- Secondary attack does nothing
