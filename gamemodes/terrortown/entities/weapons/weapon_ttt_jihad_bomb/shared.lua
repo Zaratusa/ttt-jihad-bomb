@@ -12,6 +12,9 @@ if SERVER then
 else
 	LANG.AddToLanguage("english", "jihad_bomb_name", "Jihad Bomb")
 	LANG.AddToLanguage("english", "jihad_bomb_desc", "Sacrifice yourself to Allah.\nYour 72 virgins await.\n\nNOTE: No refund after use.")
+	
+	LANG.AddToLanguage("Русский", "jihad_bomb_name", "Джихад Бомба")
+	LANG.AddToLanguage("Русский", "jihad_bomb_desc", "Принесите себя в жертву Аллаху.\nВаши 72 девственниц ждут.\n\nПРИМЕЧАНИЕ: После использования не возращать.")
 
 	SWEP.PrintName = "jihad_bomb_name"
 	SWEP.Slot = 8
